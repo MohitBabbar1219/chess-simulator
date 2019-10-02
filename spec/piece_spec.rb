@@ -13,13 +13,13 @@ describe 'Piece' do
     end
   end
 
-  describe '#black' do
+  describe '#white' do
     it 'returns a piece with white set' do
       expect(Piece.white(Coordinate.new(1, 2), []).set).to eq(Piece::Set::WHITE)
     end
 
     it 'does not return a piece with black set' do
-      expect(Piece.black(Coordinate.new(3, 2), []).set).to_not eq(Piece::Set::BLACK)
+      expect(Piece.white(Coordinate.new(3, 2), []).set).to_not eq(Piece::Set::BLACK)
     end
   end
 
