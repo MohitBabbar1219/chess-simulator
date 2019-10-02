@@ -23,5 +23,15 @@ module Pieces
               two_half_two_down_left,
               two_half_one_down_right,
               two_half_two_down_right]
+
+    left_diagonal = ->(current_position, proposed_position) do
+      result = current_position.subtract(proposed_position)
+      result.x_coordinate.abs == result.y_coordinate.abs
+    end
+    right_diagonal = ->(current_position, proposed_position) do
+      result = current_position.subtract(proposed_position)
+      result.x_coordinate == result.y_coordinate
+    end
+    BISHOP = [left_diagonal, right_diagonal]
   end
 end

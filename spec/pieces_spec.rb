@@ -153,5 +153,55 @@ describe 'Pieces' do
         expect(a_knight.position).to eql(a_position)
       end
     end
+
+    describe '::BISHOP' do
+      it 'allows bishop to move on right diagonal upwards' do
+        a_position = Coordinate.new(5, 3)
+        a_bishop = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::BISHOP)
+        position_to_move_to = Coordinate.new(7, 5)
+        a_bishop.move_to(position_to_move_to)
+        expect(a_bishop.position).to eql(position_to_move_to)
+      end
+
+      it 'allows bishop to move on right diagonal downwards' do
+        a_position = Coordinate.new(5, 3)
+        a_bishop = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::BISHOP)
+        position_to_move_to = Coordinate.new(2, 0)
+        a_bishop.move_to(position_to_move_to)
+        expect(a_bishop.position).to eql(position_to_move_to)
+      end
+
+      it 'allows bishop to move on left diagonal upwards' do
+        a_position = Coordinate.new(5, 3)
+        a_bishop = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::BISHOP)
+        position_to_move_to = Coordinate.new(2, 6)
+        a_bishop.move_to(position_to_move_to)
+        expect(a_bishop.position).to eql(position_to_move_to)
+      end
+
+      it 'allows bishop to move on left diagonal downwards' do
+        a_position = Coordinate.new(5, 3)
+        a_bishop = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::BISHOP)
+        position_to_move_to = Coordinate.new(7, 1)
+        a_bishop.move_to(position_to_move_to)
+        expect(a_bishop.position).to eql(position_to_move_to)
+      end
+
+      it 'does not allow bishop to move three steps right' do
+        a_position = Coordinate.new(1, 2)
+        a_bishop = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::BISHOP)
+        position_to_move_to = Coordinate.new(4, 2)
+        a_bishop.move_to(position_to_move_to)
+        expect(a_bishop.position).to eql(a_position)
+      end
+
+      it 'does not allow bishop to move two steps forward' do
+        a_position = Coordinate.new(1, 2)
+        a_bishop = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::BISHOP)
+        position_to_move_to = Coordinate.new(3, 2)
+        a_bishop.move_to(position_to_move_to)
+        expect(a_bishop.position).to eql(a_position)
+      end
+    end
   end
 end
