@@ -79,4 +79,8 @@ module Pieces
   def self.create_king(position, set)
     Piece.new(position, set, ValidMoves::KING)
   end
+
+  def self.create_queen(position, set)
+    Piece.new(position, set, ValidMoves::QUEEN)
+  end
 end

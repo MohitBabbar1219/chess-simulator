@@ -297,7 +297,7 @@ describe 'Pieces' do
     describe '::QUEEN' do
       it 'allows queen to move two steps forward' do
         a_position = Coordinate.new(1, 2)
-        a_queen = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::QUEEN)
+        a_queen = Pieces.create_queen(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 4)
         a_queen.move_to(position_to_move_to)
         expect(a_queen.position).to eql(position_to_move_to)
@@ -305,7 +305,7 @@ describe 'Pieces' do
 
       it 'allows queen to move two steps backward' do
         a_position = Coordinate.new(1, 2)
-        a_queen = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::QUEEN)
+        a_queen = Pieces.create_queen(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 0)
         a_queen.move_to(position_to_move_to)
         expect(a_queen.position).to eql(position_to_move_to)
@@ -313,7 +313,7 @@ describe 'Pieces' do
 
       it 'allows queen to move three steps right' do
         a_position = Coordinate.new(1, 2)
-        a_queen = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::QUEEN)
+        a_queen = Pieces.create_queen(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(4, 2)
         a_queen.move_to(position_to_move_to)
         expect(a_queen.position).to eql(position_to_move_to)
@@ -321,7 +321,7 @@ describe 'Pieces' do
 
       it 'allows queen to move two steps on right diagonal upward' do
         a_position = Coordinate.new(1, 2)
-        a_queen = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::QUEEN)
+        a_queen = Pieces.create_queen(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 4)
         a_queen.move_to(position_to_move_to)
         expect(a_queen.position).to eql(position_to_move_to)
@@ -329,18 +329,18 @@ describe 'Pieces' do
 
       it 'does not allow queen to move like a knight' do
         a_position = Coordinate.new(5, 3)
-        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::QUEEN)
+        a_queen = Pieces.create_queen(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 4)
-        a_knight.move_to(position_to_move_to)
-        expect(a_knight.position).to eql(a_position)
+        a_queen.move_to(position_to_move_to)
+        expect(a_queen.position).to eql(a_position)
       end
 
       it 'does not allow queen to move to ad-hoc invalid places' do
         a_position = Coordinate.new(5, 3)
-        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::QUEEN)
+        a_queen = Pieces.create_queen(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 4)
-        a_knight.move_to(position_to_move_to)
-        expect(a_knight.position).to eql(a_position)
+        a_queen.move_to(position_to_move_to)
+        expect(a_queen.position).to eql(a_position)
       end
     end
   end
