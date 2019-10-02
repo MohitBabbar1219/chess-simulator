@@ -15,10 +15,14 @@ class Piece
   end
 
   def move_to(position)
-    @position = position
+    @position = position if is_move_valid(position)
   end
 
   private
+
+  def is_move_valid(proposed_position)
+    @valid_moves.select { |move| move.call(@position, proposed_position) }.length > 0
+  end
 
   def initialize(position, set, valid_moves)
     @position = position

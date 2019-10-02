@@ -24,11 +24,21 @@ describe 'Piece' do
   end
 
   describe '#move_to' do
-    it 'moves to given position' do
-      a_piece = Piece.black(Coordinate.new(3, 2), [])
-      expect(a_piece.position).to eql(Coordinate.new(3, 2))
-      a_piece.move_to(Coordinate.new(4, 3))
-      expect(a_piece.position).to eql(Coordinate.new(4, 3))
+    before(:each) do
+      @a_move = ->(current_position, proposed_position) { current_position.add(Coordinate.new(0, 1)).eql?(proposed_position) }
+      @a_piece = Piece.black(Coordinate.new(3, 2), [@a_move])
+    end
+
+    it 'moves to given position if position is valid' do
+      expect(@a_piece.position).to eql(Coordinate.new(3, 2))
+      @a_piece.move_to(Coordinate.new(3, 3))
+      expect(@a_piece.position).to eql(Coordinate.new(3, 3))
+    end
+
+    it 'does not move to given position if position is not valid' do
+      expect(@a_piece.position).to eql(Coordinate.new(3, 2))
+      @a_piece.move_to(Coordinate.new(3, 4))
+      expect(@a_piece.position).to eql(Coordinate.new(3, 2))
     end
   end
 end
