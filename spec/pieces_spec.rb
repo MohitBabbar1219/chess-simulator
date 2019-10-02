@@ -207,7 +207,7 @@ describe 'Pieces' do
     describe '::KING' do
       it 'allows king to move one step forward' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 3)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(position_to_move_to)
@@ -215,7 +215,7 @@ describe 'Pieces' do
 
       it 'allows king to move one step backward' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 1)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(position_to_move_to)
@@ -223,7 +223,7 @@ describe 'Pieces' do
 
       it 'allows king to move one step left' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(0, 2)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(position_to_move_to)
@@ -231,7 +231,7 @@ describe 'Pieces' do
 
       it 'allows king to move one step right' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(2, 2)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(position_to_move_to)
@@ -239,7 +239,7 @@ describe 'Pieces' do
 
       it 'allows king to move one step right diagonal upward' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(2, 3)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(position_to_move_to)
@@ -247,7 +247,7 @@ describe 'Pieces' do
 
       it 'allows king to move one step right diagonal downward' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(0, 1)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(position_to_move_to)
@@ -255,7 +255,7 @@ describe 'Pieces' do
 
       it 'allows king to move one step left diagonal upward' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(0, 3)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(position_to_move_to)
@@ -263,7 +263,7 @@ describe 'Pieces' do
 
       it 'allows king to move one step left diagonal downward' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(2, 1)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(position_to_move_to)
@@ -271,7 +271,7 @@ describe 'Pieces' do
 
       it 'does not allow king to move two step right diagonal upward' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 4)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(a_position)
@@ -279,7 +279,7 @@ describe 'Pieces' do
 
       it 'does not allow king to move two steps right' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 2)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(a_position)
@@ -287,7 +287,7 @@ describe 'Pieces' do
 
       it 'does not allow king to move two steps forward' do
         a_position = Coordinate.new(1, 2)
-        a_king = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KING)
+        a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 4)
         a_king.move_to(position_to_move_to)
         expect(a_king.position).to eql(a_position)
