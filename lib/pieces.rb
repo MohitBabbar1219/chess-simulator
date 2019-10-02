@@ -63,4 +63,8 @@ module Pieces
   def self.create_pawn(position, set)
     Piece.new(position, set, ValidMoves::PAWN)
   end
+
+  def self.create_rook(position, set)
+    Piece.new(position, set, ValidMoves::ROOK)
+  end
 end
