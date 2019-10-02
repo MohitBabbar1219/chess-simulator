@@ -33,5 +33,23 @@ module Pieces
       result.x_coordinate == result.y_coordinate
     end
     BISHOP = [left_diagonal, right_diagonal]
+
+    one_step_backward = ->(current_position, proposed_position) { current_position.add(Coordinate.new(0, -1)).eql?(proposed_position) }
+    one_step_left = ->(current_position, proposed_position) { current_position.add(Coordinate.new(-1, 0)).eql?(proposed_position) }
+    one_step_right = ->(current_position, proposed_position) { current_position.add(Coordinate.new(1, 0)).eql?(proposed_position) }
+    one_step_right_diagonal_up  = ->(current_position, proposed_position) { current_position.add(Coordinate.new(1, 1)).eql?(proposed_position) }
+    one_step_right_diagonal_down  = ->(current_position, proposed_position) { current_position.add(Coordinate.new(-1, -1)).eql?(proposed_position) }
+    one_step_left_diagonal_up  = ->(current_position, proposed_position) { current_position.add(Coordinate.new(-1, 1)).eql?(proposed_position) }
+    one_step_left_diagonal_down  = ->(current_position, proposed_position) { current_position.add(Coordinate.new(1, -1)).eql?(proposed_position) }
+    KING = [
+        one_step_forward,
+        one_step_backward,
+        one_step_right,
+        one_step_left,
+        one_step_right_diagonal_up,
+        one_step_right_diagonal_down,
+        one_step_left_diagonal_up,
+        one_step_left_diagonal_down
+    ]
   end
 end
