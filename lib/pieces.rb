@@ -59,4 +59,8 @@ module Pieces
         horizontal
     ]
   end
+
+  def self.create_pawn(position, set)
+    Piece.new(position, set, ValidMoves::PAWN)
+  end
 end

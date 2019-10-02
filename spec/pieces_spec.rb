@@ -7,7 +7,7 @@ describe 'Pieces' do
     describe '::PAWN' do
       it 'allows pawn to move one step forward' do
         a_position = Coordinate.new(1, 2)
-        a_pawn = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::PAWN)
+        a_pawn = Pieces.create_pawn(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 3)
         a_pawn.move_to(position_to_move_to)
         expect(a_pawn.position).to eql(position_to_move_to)
@@ -15,7 +15,7 @@ describe 'Pieces' do
 
       it 'does not allow pawn to move one step backward' do
         a_position = Coordinate.new(1, 2)
-        a_pawn = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::PAWN)
+        a_pawn = Pieces.create_pawn(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 1)
         a_pawn.move_to(position_to_move_to)
         expect(a_pawn.position).to eql(a_position)
@@ -23,7 +23,7 @@ describe 'Pieces' do
 
       it 'does not allow pawn to move diagonal' do
         a_position = Coordinate.new(1, 2)
-        a_pawn = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::PAWN)
+        a_pawn = Pieces.create_pawn(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(2, 3)
         a_pawn.move_to(position_to_move_to)
         expect(a_pawn.position).to eql(a_position)
