@@ -67,4 +67,8 @@ module Pieces
   def self.create_rook(position, set)
     Piece.new(position, set, ValidMoves::ROOK)
   end
+
+  def self.create_knight(position, set)
+    Piece.new(position, set, ValidMoves::KNIGHT)
+  end
 end
