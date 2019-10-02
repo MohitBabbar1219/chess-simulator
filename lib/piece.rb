@@ -6,12 +6,12 @@ class Piece
     WHITE = :white
   end
 
-  def self.black(position)
-    Piece.new(position, Set::BLACK)
+  def self.black(position, valid_moves)
+    Piece.new(position, Set::BLACK, valid_moves)
   end
 
-  def self.white(position)
-    Piece.new(position, Set::WHITE)
+  def self.white(position, valid_moves)
+    Piece.new(position, Set::WHITE, valid_moves)
   end
 
   def move_to(position)
@@ -20,8 +20,9 @@ class Piece
 
   private
 
-  def initialize(position, set)
+  def initialize(position, set, valid_moves)
     @position = position
     @set = set
+    @valid_moves = valid_moves
   end
 end
