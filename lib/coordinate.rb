@@ -10,6 +10,10 @@ class Coordinate
     @x_coordinate == other_coordinate.x_coordinate && @y_coordinate == other_coordinate.y_coordinate
   end
 
+  def add(other_coordinate)
+    Coordinate.new(@x_coordinate + other_coordinate.x_coordinate, @y_coordinate + other_coordinate.y_coordinate)
+  end
+
   def hash
     @x_coordinate.hash + @y_coordinate.hash
   end
