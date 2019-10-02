@@ -71,4 +71,8 @@ module Pieces
   def self.create_knight(position, set)
     Piece.new(position, set, ValidMoves::KNIGHT)
   end
+
+  def self.create_bishop(position, set)
+    Piece.new(position, set, ValidMoves::BISHOP)
+  end
 end
