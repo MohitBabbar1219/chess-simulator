@@ -63,5 +63,95 @@ describe 'Pieces' do
         expect(a_rook.position).to eql(a_position)
       end
     end
+
+    describe '::KNIGHT' do
+      it 'allows knight to move one step forward and two steps left' do
+        a_position = Coordinate.new(5, 3)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(3, 4)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(position_to_move_to)
+      end
+
+      it 'allows knight to move one step forward and two steps right' do
+        a_position = Coordinate.new(5, 3)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(7, 4)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(position_to_move_to)
+      end
+
+      it 'allows knight to move two steps forward and one step left' do
+        a_position = Coordinate.new(5, 3)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(4, 5)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(position_to_move_to)
+      end
+
+      it 'allows knight to move two steps forward and one step right' do
+        a_position = Coordinate.new(5, 3)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(6, 5)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(position_to_move_to)
+      end
+
+      it 'allows knight to move one step backward and two steps left' do
+        a_position = Coordinate.new(5, 3)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(3, 2)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(position_to_move_to)
+      end
+
+      it 'allows knight to move one step backward and two steps right' do
+        a_position = Coordinate.new(5, 3)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(7, 2)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(position_to_move_to)
+      end
+
+      it 'allows knight to move two steps backward and one step left' do
+        a_position = Coordinate.new(5, 3)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(4, 1)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(position_to_move_to)
+      end
+
+      it 'allows knight to move two steps backward and one step right' do
+        a_position = Coordinate.new(5, 3)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(6, 1)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(position_to_move_to)
+      end
+
+      it 'does not allow knight to move diagonally' do
+        a_position = Coordinate.new(1, 2)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(2, 3)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(a_position)
+      end
+
+      it 'does not allow knight to move vertically' do
+        a_position = Coordinate.new(1, 2)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(1, 4)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(a_position)
+      end
+
+      it 'does not allow knight to move horizontally' do
+        a_position = Coordinate.new(1, 2)
+        a_knight = Piece.new(a_position, Piece::Set::WHITE, Pieces::ValidMoves::KNIGHT)
+        position_to_move_to = Coordinate.new(5, 2)
+        a_knight.move_to(position_to_move_to)
+        expect(a_knight.position).to eql(a_position)
+      end
+    end
   end
 end
