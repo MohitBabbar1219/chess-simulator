@@ -51,5 +51,12 @@ module Pieces
         one_step_left_diagonal_up,
         one_step_left_diagonal_down
     ]
+
+    QUEEN = [
+        left_diagonal,
+        right_diagonal,
+        vertical,
+        horizontal
+    ]
   end
 end
