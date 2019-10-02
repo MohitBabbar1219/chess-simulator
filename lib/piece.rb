@@ -1,5 +1,5 @@
 class Piece
-  attr_reader :set
+  attr_reader :set, :position
 
   module Set
     BLACK = :black
@@ -12,6 +12,10 @@ class Piece
 
   def self.white(position)
     Piece.new(position, Set::WHITE)
+  end
+
+  def move_to(position)
+    @position = position
   end
 
   private

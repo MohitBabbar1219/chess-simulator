@@ -22,4 +22,13 @@ describe 'Piece' do
       expect(Piece.black(Coordinate.new(3, 2)).set).to_not eq(Piece::Set::BLACK)
     end
   end
+
+  describe '#move_to' do
+    it 'moves to given position' do
+      a_piece = Piece.black(Coordinate.new(3, 2))
+      expect(a_piece.position).to eql(Coordinate.new(3, 2))
+      a_piece.move_to(Coordinate.new(4, 3))
+      expect(a_piece.position).to eql(Coordinate.new(4, 3))
+    end
+  end
 end
