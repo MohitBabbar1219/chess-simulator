@@ -13,7 +13,10 @@ class Piece
   end
 
   def move_to(position)
-    @position = position if is_move_valid(position)
+    if is_move_valid(position)
+      return @position = position
+    end
+    raise(Pieces::ValidMoves::InvalidMoveException)
   end
 
   private

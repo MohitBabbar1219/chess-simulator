@@ -17,16 +17,14 @@ describe 'Pieces' do
         a_position = Coordinate.new(1, 2)
         a_pawn = Pieces.create_pawn(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 1)
-        a_pawn.move_to(position_to_move_to)
-        expect(a_pawn.position).to eql(a_position)
+        expect { a_pawn.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
 
       it 'does not allow pawn to move diagonal' do
         a_position = Coordinate.new(1, 2)
         a_pawn = Pieces.create_pawn(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(2, 3)
-        a_pawn.move_to(position_to_move_to)
-        expect(a_pawn.position).to eql(a_position)
+        expect { a_pawn.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
     end
 
@@ -59,8 +57,7 @@ describe 'Pieces' do
         a_position = Coordinate.new(1, 2)
         a_rook = Pieces.create_rook(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(2, 3)
-        a_rook.move_to(position_to_move_to)
-        expect(a_rook.position).to eql(a_position)
+        expect { a_rook.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
     end
 
@@ -133,24 +130,21 @@ describe 'Pieces' do
         a_position = Coordinate.new(1, 2)
         a_knight = Pieces.create_knight(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(2, 3)
-        a_knight.move_to(position_to_move_to)
-        expect(a_knight.position).to eql(a_position)
+        expect { a_knight.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
 
       it 'does not allow knight to move vertically' do
         a_position = Coordinate.new(1, 2)
         a_knight = Pieces.create_knight(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 4)
-        a_knight.move_to(position_to_move_to)
-        expect(a_knight.position).to eql(a_position)
+        expect { a_knight.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
 
       it 'does not allow knight to move horizontally' do
         a_position = Coordinate.new(1, 2)
         a_knight = Pieces.create_knight(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(5, 2)
-        a_knight.move_to(position_to_move_to)
-        expect(a_knight.position).to eql(a_position)
+        expect { a_knight.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
     end
 
@@ -191,16 +185,14 @@ describe 'Pieces' do
         a_position = Coordinate.new(1, 2)
         a_bishop = Pieces.create_bishop(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(4, 2)
-        a_bishop.move_to(position_to_move_to)
-        expect(a_bishop.position).to eql(a_position)
+        expect { a_bishop.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
 
       it 'does not allow bishop to move two steps forward' do
         a_position = Coordinate.new(1, 2)
         a_bishop = Pieces.create_bishop(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 2)
-        a_bishop.move_to(position_to_move_to)
-        expect(a_bishop.position).to eql(a_position)
+        expect { a_bishop.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
     end
 
@@ -273,24 +265,21 @@ describe 'Pieces' do
         a_position = Coordinate.new(1, 2)
         a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 4)
-        a_king.move_to(position_to_move_to)
-        expect(a_king.position).to eql(a_position)
+        expect { a_king.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
 
       it 'does not allow king to move two steps right' do
         a_position = Coordinate.new(1, 2)
         a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 2)
-        a_king.move_to(position_to_move_to)
-        expect(a_king.position).to eql(a_position)
+        expect { a_king.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
 
       it 'does not allow king to move two steps forward' do
         a_position = Coordinate.new(1, 2)
         a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 4)
-        a_king.move_to(position_to_move_to)
-        expect(a_king.position).to eql(a_position)
+        expect { a_king.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
     end
 
@@ -331,16 +320,14 @@ describe 'Pieces' do
         a_position = Coordinate.new(5, 3)
         a_queen = Pieces.create_queen(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 4)
-        a_queen.move_to(position_to_move_to)
-        expect(a_queen.position).to eql(a_position)
+        expect { a_queen.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
 
       it 'does not allow queen to move to ad-hoc invalid places' do
         a_position = Coordinate.new(5, 3)
         a_queen = Pieces.create_queen(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 4)
-        a_queen.move_to(position_to_move_to)
-        expect(a_queen.position).to eql(a_position)
+        expect { a_queen.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
       end
     end
   end
