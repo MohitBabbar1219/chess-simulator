@@ -1,3 +1,6 @@
+require './coordinate'
+require './Piece'
+
 module Pieces
   module ValidMoves
     class InvalidMoveException < Exception
@@ -86,4 +89,36 @@ module Pieces
   def self.create_queen(position, set)
     Piece.new("queen", position, set, ValidMoves::QUEEN)
   end
+
+  white_pawns = (0...8).map { |ind| Pieces.create_pawn(Coordinate.new(ind, 6), Piece::Set::WHITE) }
+  black_pawns = (0...8).map { |ind| Pieces.create_pawn(Coordinate.new(ind, 1), Piece::Set::BLACK) }
+
+  black_leads = [
+      Pieces.create_rook(Coordinate.new(0, 0), Piece::Set::BLACK),
+      Pieces.create_rook(Coordinate.new(7, 0), Piece::Set::BLACK),
+      Pieces.create_knight(Coordinate.new(1, 0), Piece::Set::BLACK),
+      Pieces.create_knight(Coordinate.new(6, 0), Piece::Set::BLACK),
+      Pieces.create_bishop(Coordinate.new(2, 0), Piece::Set::BLACK),
+      Pieces.create_bishop(Coordinate.new(5, 0), Piece::Set::BLACK),
+      Pieces.create_queen(Coordinate.new(3, 0), Piece::Set::BLACK),
+      Pieces.create_king(Coordinate.new(4, 0), Piece::Set::BLACK),
+  ]
+  white_leads = [
+      Pieces.create_rook(Coordinate.new(0, 7), Piece::Set::WHITE),
+      Pieces.create_rook(Coordinate.new(7, 7), Piece::Set::WHITE),
+      Pieces.create_knight(Coordinate.new(1, 7), Piece::Set::WHITE),
+      Pieces.create_knight(Coordinate.new(6, 7), Piece::Set::WHITE),
+      Pieces.create_bishop(Coordinate.new(2, 7), Piece::Set::WHITE),
+      Pieces.create_bishop(Coordinate.new(5, 7), Piece::Set::WHITE),
+      Pieces.create_queen(Coordinate.new(3, 7), Piece::Set::WHITE),
+      Pieces.create_king(Coordinate.new(4, 7), Piece::Set::WHITE),
+  ]
+
+  INITIAL_SEED = [
+      white_pawns,
+      black_pawns,
+      white_leads,
+      black_leads
+  ].flatten
+
 end
