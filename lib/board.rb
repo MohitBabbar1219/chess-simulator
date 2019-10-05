@@ -25,6 +25,11 @@ class Board
     print(game_state.to_json)
   end
 
+  def is_piece_white_at?(position)
+    piece = @position_to_piece_map[position]
+    piece.set == Piece::Set::WHITE
+  end
+
   private
 
   def in_board?(coordinate)

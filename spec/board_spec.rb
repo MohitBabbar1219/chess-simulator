@@ -55,4 +55,20 @@ describe 'Board' do
       expect { a_board.make_move(from_coordinate, to_coordinate) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
     end
   end
+
+  describe '#is_piece_white_at?' do
+    it 'returns true given the piece at concerned position is white' do
+      a_position = Coordinate.new(1, 2)
+      a_piece = Pieces.create_queen(a_position, Piece::Set::WHITE)
+      a_board = Board.new([a_piece])
+      expect(a_board.is_piece_white_at?(a_position)).to be_truthy
+    end
+
+    it 'returns false given the piece at concerned position is black' do
+      a_position = Coordinate.new(1, 2)
+      a_piece = Pieces.create_queen(a_position, Piece::Set::BLACK)
+      a_board = Board.new([a_piece])
+      expect(a_board.is_piece_white_at?(a_position)).to be_falsey
+    end
+  end
 end
