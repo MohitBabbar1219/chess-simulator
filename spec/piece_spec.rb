@@ -43,4 +43,19 @@ describe 'Piece' do
       expect { @a_piece.move_to(Coordinate.new(3, 4)) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
     end
   end
+
+  describe '#state' do
+    it 'returns a map containing name, position and state of the piece' do
+      a_name = "a_piece"
+      a_position = Coordinate.new(3, 2)
+      a_set = Piece::Set::WHITE
+      a_piece = Piece.new(a_name, a_position, a_set, [])
+      a_state = a_piece.state
+
+      expect(a_state[:name]).to eq(a_name)
+      expect(a_state[:set]).to eq(a_set)
+      expect(a_state[:position][:x]).to eq(a_position.x_coordinate)
+      expect(a_state[:position][:y]).to eq(a_position.y_coordinate)
+    end
+  end
 end

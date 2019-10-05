@@ -20,6 +20,17 @@ class Piece
     raise(Pieces::ValidMoves::InvalidMoveException)
   end
 
+  def state
+    {
+        name: @name,
+        position: {
+            x: @position.x_coordinate,
+            y: @position.y_coordinate
+        },
+        set: @set,
+    }
+  end
+
   private
 
   def is_move_valid(proposed_position)
