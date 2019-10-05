@@ -1,5 +1,5 @@
-require './coordinate'
-require './Piece'
+require_relative './coordinate'
+require_relative './piece'
 
 module Pieces
   module ValidMoves
