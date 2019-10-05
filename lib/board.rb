@@ -21,8 +21,8 @@ class Board
     @position_to_piece_map.keys.map do |key|
       game_state.push(@position_to_piece_map[key].state)
     end
-    print("Copy the following json and visit chess-simulator.heroku-app.com, paste it there to visualize the game state.\n")
-    print(game_state.to_json)
+    puts("Copy the following json and visit https://chess-simulator.herokuapp.com/, paste it there to visualize the game state.\n")
+    puts(game_state.to_json)
   end
 
   def is_piece_white_at?(position)
