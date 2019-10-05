@@ -1,7 +1,8 @@
 class Piece
   attr_reader :set, :position
 
-  def initialize(position, set, valid_moves)
+  def initialize(name, position, set, valid_moves)
+    @name = name
     @position = position
     @set = set
     @valid_moves = valid_moves
