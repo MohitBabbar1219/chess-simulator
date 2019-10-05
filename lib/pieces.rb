@@ -64,26 +64,26 @@ module Pieces
   end
 
   def self.create_pawn(position, set)
-    Piece.new(position, set, ValidMoves::PAWN)
+    Piece.new("pawn", position, set, ValidMoves::PAWN)
   end
 
   def self.create_rook(position, set)
-    Piece.new(position, set, ValidMoves::ROOK)
+    Piece.new("rook", position, set, ValidMoves::ROOK)
   end
 
   def self.create_knight(position, set)
-    Piece.new(position, set, ValidMoves::KNIGHT)
+    Piece.new("knight", position, set, ValidMoves::KNIGHT)
   end
 
   def self.create_bishop(position, set)
-    Piece.new(position, set, ValidMoves::BISHOP)
+    Piece.new("bishop", position, set, ValidMoves::BISHOP)
   end
 
   def self.create_king(position, set)
-    Piece.new(position, set, ValidMoves::KING)
+    Piece.new("king", position, set, ValidMoves::KING)
   end
 
   def self.create_queen(position, set)
-    Piece.new(position, set, ValidMoves::QUEEN)
+    Piece.new("queen", position, set, ValidMoves::QUEEN)
   end
 end
