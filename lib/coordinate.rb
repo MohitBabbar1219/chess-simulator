@@ -18,6 +18,13 @@ class Coordinate
     Coordinate.new(@x_coordinate - other_coordinate.x_coordinate, @y_coordinate - other_coordinate.y_coordinate)
   end
 
+  def compare(other_coordinate)
+    is_outside_or_on = @x_coordinate <= other_coordinate.x_coordinate || @y_coordinate <= other_coordinate.y_coordinate
+    return -1 if is_outside_or_on
+    is_inside = @x_coordinate > other_coordinate.x_coordinate && @y_coordinate > other_coordinate.y_coordinate
+    1 if is_inside
+  end
+
   def hash
     @x_coordinate.hash + @y_coordinate.hash
   end

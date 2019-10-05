@@ -43,4 +43,36 @@ describe 'Coordinate' do
       expect(a_coordinate.subtract(coordinate_to_subtract)).to eql(another_coordinate)
     end
   end
+
+  describe '#compare' do
+    it 'returns -1 if the x coordinate of the point lies outside the area enclosed by the coordinate' do
+      a_coordinate = Coordinate.new(1, 2)
+      another_coordinate = Coordinate.new(10, 0)
+      expect(a_coordinate.compare(another_coordinate)).to eql(-1)
+    end
+
+    it 'returns -1 if the y coordinate of the point lies outside the area enclosed by the coordinate' do
+      a_coordinate = Coordinate.new(1, 2)
+      another_coordinate = Coordinate.new(0, 10)
+      expect(a_coordinate.compare(another_coordinate)).to eql(-1)
+    end
+
+    it 'returns -1 if both x and y coordinates of the point lie outside the area enclosed by the coordinate' do
+      a_coordinate = Coordinate.new(1, 2)
+      another_coordinate = Coordinate.new(10, 10)
+      expect(a_coordinate.compare(another_coordinate)).to eql(-1)
+    end
+
+    it 'returns -1 if the point lies on the point being compared' do
+      a_coordinate = Coordinate.new(1, 2)
+      another_coordinate = Coordinate.new(1, 2)
+      expect(a_coordinate.compare(another_coordinate)).to eql(-1)
+    end
+
+    it 'returns 1 if both x and y coordinates of the point lie inside the area enclosed by the coordinate' do
+      a_coordinate = Coordinate.new(1, 2)
+      another_coordinate = Coordinate.new(0, 1)
+      expect(a_coordinate.compare(another_coordinate)).to eql(1)
+    end
+  end
 end
