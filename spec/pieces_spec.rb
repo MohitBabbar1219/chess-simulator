@@ -1,6 +1,7 @@
 require './lib/piece'
 require './lib/coordinate'
 require './lib/pieces'
+require './lib/exceptions'
 
 describe 'Pieces' do
   describe '::ValidMoves' do
@@ -17,14 +18,14 @@ describe 'Pieces' do
         a_position = Coordinate.new(1, 2)
         a_pawn = Pieces.create_pawn(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 1)
-        expect { a_pawn.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_pawn.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
 
       it 'does not allow pawn to move diagonal' do
         a_position = Coordinate.new(1, 2)
         a_pawn = Pieces.create_pawn(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(2, 3)
-        expect { a_pawn.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_pawn.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
     end
 
@@ -57,7 +58,7 @@ describe 'Pieces' do
         a_position = Coordinate.new(1, 2)
         a_rook = Pieces.create_rook(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(2, 3)
-        expect { a_rook.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_rook.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
     end
 
@@ -130,21 +131,21 @@ describe 'Pieces' do
         a_position = Coordinate.new(1, 2)
         a_knight = Pieces.create_knight(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(2, 3)
-        expect { a_knight.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_knight.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
 
       it 'does not allow knight to move vertically' do
         a_position = Coordinate.new(1, 2)
         a_knight = Pieces.create_knight(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 4)
-        expect { a_knight.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_knight.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
 
       it 'does not allow knight to move horizontally' do
         a_position = Coordinate.new(1, 2)
         a_knight = Pieces.create_knight(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(5, 2)
-        expect { a_knight.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_knight.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
     end
 
@@ -185,14 +186,14 @@ describe 'Pieces' do
         a_position = Coordinate.new(1, 2)
         a_bishop = Pieces.create_bishop(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(4, 2)
-        expect { a_bishop.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_bishop.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
 
       it 'does not allow bishop to move two steps forward' do
         a_position = Coordinate.new(1, 2)
         a_bishop = Pieces.create_bishop(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 2)
-        expect { a_bishop.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_bishop.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
     end
 
@@ -265,21 +266,21 @@ describe 'Pieces' do
         a_position = Coordinate.new(1, 2)
         a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 4)
-        expect { a_king.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_king.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
 
       it 'does not allow king to move two steps right' do
         a_position = Coordinate.new(1, 2)
         a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 2)
-        expect { a_king.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_king.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
 
       it 'does not allow king to move two steps forward' do
         a_position = Coordinate.new(1, 2)
         a_king = Pieces.create_king(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 4)
-        expect { a_king.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_king.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
     end
 
@@ -320,14 +321,14 @@ describe 'Pieces' do
         a_position = Coordinate.new(5, 3)
         a_queen = Pieces.create_queen(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(3, 4)
-        expect { a_queen.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_queen.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
 
       it 'does not allow queen to move to ad-hoc invalid places' do
         a_position = Coordinate.new(5, 3)
         a_queen = Pieces.create_queen(a_position, Piece::Set::WHITE)
         position_to_move_to = Coordinate.new(1, 4)
-        expect { a_queen.move_to(position_to_move_to) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+        expect { a_queen.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end
     end
   end

@@ -17,7 +17,7 @@ class Piece
     if is_move_valid(position)
       return @position = position
     end
-    raise(Pieces::ValidMoves::InvalidMoveException)
+    raise(Exceptions::InvalidMoveException)
   end
 
   def state

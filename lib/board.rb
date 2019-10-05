@@ -9,7 +9,7 @@ class Board
   def make_move(from, to)
     piece_to_move = @position_to_piece_map[from]
     if piece_to_move.nil? || !in_board?(to)
-      raise(Pieces::ValidMoves::InvalidMoveException)
+      raise(Exceptions::InvalidMoveException)
     end
     piece_to_move.move_to(to)
     @position_to_piece_map[to] = piece_to_move

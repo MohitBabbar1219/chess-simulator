@@ -1,6 +1,7 @@
 require './lib/piece'
 require './lib/pieces'
 require './lib/coordinate'
+require './lib/exceptions'
 require 'rspec'
 
 describe 'Piece' do
@@ -40,7 +41,7 @@ describe 'Piece' do
 
     it 'does not move to given position if position is not valid' do
       expect(@a_piece.position).to eql(Coordinate.new(3, 2))
-      expect { @a_piece.move_to(Coordinate.new(3, 4)) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+      expect { @a_piece.move_to(Coordinate.new(3, 4)) }.to raise_exception(Exceptions::InvalidMoveException)
     end
   end
 

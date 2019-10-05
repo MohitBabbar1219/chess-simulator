@@ -1,6 +1,7 @@
 require './lib/piece'
 require './lib/coordinate'
 require './lib/board'
+require './lib/exceptions'
 require './lib/pieces'
 
 describe 'Board' do
@@ -19,7 +20,7 @@ describe 'Board' do
       to_coordinate = Coordinate.new(3, 5)
       a_piece = Pieces.create_queen(from_coordinate, Piece::Set::BLACK)
       a_board = Board.new([a_piece])
-      expect { a_board.make_move(from_coordinate, to_coordinate) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+      expect { a_board.make_move(from_coordinate, to_coordinate) }.to raise_exception(Exceptions::InvalidMoveException)
     end
 
     it 'raises error if the to position is outside the board' do
@@ -27,7 +28,7 @@ describe 'Board' do
       to_coordinate = Coordinate.new(8, 5)
       a_piece = Pieces.create_queen(from_coordinate, Piece::Set::BLACK)
       a_board = Board.new([a_piece])
-      expect { a_board.make_move(from_coordinate, to_coordinate) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+      expect { a_board.make_move(from_coordinate, to_coordinate) }.to raise_exception(Exceptions::InvalidMoveException)
     end
 
     it 'raises error if the to position has negative coordinates' do
@@ -35,7 +36,7 @@ describe 'Board' do
       to_coordinate = Coordinate.new(-5, 5)
       a_piece = Pieces.create_queen(from_coordinate, Piece::Set::BLACK)
       a_board = Board.new([a_piece])
-      expect { a_board.make_move(from_coordinate, to_coordinate) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+      expect { a_board.make_move(from_coordinate, to_coordinate) }.to raise_exception(Exceptions::InvalidMoveException)
     end
 
     it 'raises error if there is no piece at the from position' do
@@ -43,7 +44,7 @@ describe 'Board' do
       wrong_coordinate = Coordinate.new(1, 5)
       a_piece = Pieces.create_queen(from_coordinate, Piece::Set::BLACK)
       a_board = Board.new([a_piece])
-      expect { a_board.make_move(wrong_coordinate, from_coordinate) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+      expect { a_board.make_move(wrong_coordinate, from_coordinate) }.to raise_exception(Exceptions::InvalidMoveException)
     end
 
     it 'deletes old position of the piece from the board' do
@@ -52,7 +53,7 @@ describe 'Board' do
       a_piece = Pieces.create_queen(from_coordinate, Piece::Set::BLACK)
       a_board = Board.new([a_piece])
       a_board.make_move(from_coordinate, to_coordinate)
-      expect { a_board.make_move(from_coordinate, to_coordinate) }.to raise_exception(Pieces::ValidMoves::InvalidMoveException)
+      expect { a_board.make_move(from_coordinate, to_coordinate) }.to raise_exception(Exceptions::InvalidMoveException)
     end
   end
 
