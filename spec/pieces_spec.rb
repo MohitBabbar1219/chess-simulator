@@ -6,17 +6,32 @@ require './lib/exceptions'
 describe 'Pieces' do
   describe '::ValidMoves' do
     describe '::PAWN' do
-      it 'allows pawn to move one step forward' do
+      it 'allows black pawn to move one step forward' do
         a_position = Coordinate.new(1, 2)
-        a_pawn = Pieces.create_pawn(a_position, Piece::Set::WHITE)
+        a_pawn = Pieces.create_pawn(a_position, Piece::Set::BLACK)
         position_to_move_to = Coordinate.new(1, 3)
         a_pawn.move_to(position_to_move_to)
         expect(a_pawn.position).to eql(position_to_move_to)
       end
 
-      it 'does not allow pawn to move one step backward' do
+      it 'allows white pawn to move one step backward' do
         a_position = Coordinate.new(1, 2)
         a_pawn = Pieces.create_pawn(a_position, Piece::Set::WHITE)
+        position_to_move_to = Coordinate.new(1, 1)
+        a_pawn.move_to(position_to_move_to)
+        expect(a_pawn.position).to eql(position_to_move_to)
+      end
+
+      it 'does not allow white pawn to move one step forward' do
+        a_position = Coordinate.new(1, 2)
+        a_pawn = Pieces.create_pawn(a_position, Piece::Set::WHITE)
+        position_to_move_to = Coordinate.new(1, 3)
+        expect { a_pawn.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
+      end
+
+      it 'does not allow black pawn to move one step backward' do
+        a_position = Coordinate.new(1, 2)
+        a_pawn = Pieces.create_pawn(a_position, Piece::Set::BLACK)
         position_to_move_to = Coordinate.new(1, 1)
         expect { a_pawn.move_to(position_to_move_to) }.to raise_exception(Exceptions::InvalidMoveException)
       end

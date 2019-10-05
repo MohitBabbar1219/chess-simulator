@@ -4,7 +4,10 @@ require_relative './piece'
 module Pieces
   module ValidMoves
     one_step_forward = ->(current_position, proposed_position) { current_position.add(Coordinate.new(0, 1)).eql?(proposed_position) }
-    PAWN = [one_step_forward]
+    BLACK_PAWN = [one_step_forward]
+
+    one_step_backward = ->(current_position, proposed_position) { current_position.add(Coordinate.new(0, -1)).eql?(proposed_position) }
+    WHITE_PAWN = [one_step_backward]
 
     vertical = ->(current_position, proposed_position) { current_position.y_coordinate == proposed_position.y_coordinate }
     horizontal = ->(current_position, proposed_position) { current_position.x_coordinate == proposed_position.x_coordinate }
@@ -37,7 +40,6 @@ module Pieces
     end
     BISHOP = [left_diagonal, right_diagonal]
 
-    one_step_backward = ->(current_position, proposed_position) { current_position.add(Coordinate.new(0, -1)).eql?(proposed_position) }
     one_step_left = ->(current_position, proposed_position) { current_position.add(Coordinate.new(-1, 0)).eql?(proposed_position) }
     one_step_right = ->(current_position, proposed_position) { current_position.add(Coordinate.new(1, 0)).eql?(proposed_position) }
     one_step_right_diagonal_up  = ->(current_position, proposed_position) { current_position.add(Coordinate.new(1, 1)).eql?(proposed_position) }
@@ -64,7 +66,11 @@ module Pieces
   end
 
   def self.create_pawn(position, set)
-    Piece.new("pawn", position, set, ValidMoves::PAWN)
+    valid_moves = ValidMoves::WHITE_PAWN
+    if set == Piece::Set::BLACK
+      valid_moves = ValidMoves::BLACK_PAWN
+    end
+    Piece.new("pawn", position, set, valid_moves)
   end
 
   def self.create_rook(position, set)
