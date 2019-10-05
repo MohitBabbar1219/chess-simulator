@@ -7,21 +7,21 @@ describe 'Piece' do
   describe '#new' do
     context 'black' do
       it 'returns a piece with black set' do
-        expect(Piece.new(Coordinate.new(1, 2), Piece::Set::BLACK, []).set).to eq(Piece::Set::BLACK)
+        expect(Piece.new("a_piece", Coordinate.new(1, 2), Piece::Set::BLACK, []).set).to eq(Piece::Set::BLACK)
       end
 
       it 'does not return a piece with white set' do
-        expect(Piece.new(Coordinate.new(3, 2), Piece::Set::BLACK, []).set).to_not eq(Piece::Set::WHITE)
+        expect(Piece.new("a_piece", Coordinate.new(3, 2), Piece::Set::BLACK, []).set).to_not eq(Piece::Set::WHITE)
       end
     end
 
     context 'white' do
       it 'returns a piece with white set' do
-        expect(Piece.new(Coordinate.new(1, 2), Piece::Set::WHITE, []).set).to eq(Piece::Set::WHITE)
+        expect(Piece.new("a_piece", Coordinate.new(1, 2), Piece::Set::WHITE, []).set).to eq(Piece::Set::WHITE)
       end
 
       it 'does not return a piece with black set' do
-        expect(Piece.new(Coordinate.new(3, 2), Piece::Set::WHITE, []).set).to_not eq(Piece::Set::BLACK)
+        expect(Piece.new("a_piece", Coordinate.new(3, 2), Piece::Set::WHITE, []).set).to_not eq(Piece::Set::BLACK)
       end
     end
   end
@@ -29,7 +29,7 @@ describe 'Piece' do
   describe '#move_to' do
     before(:each) do
       @a_move = ->(current_position, proposed_position) { current_position.add(Coordinate.new(0, 1)).eql?(proposed_position) }
-      @a_piece = Piece.new(Coordinate.new(3, 2), Piece::Set::WHITE, [@a_move])
+      @a_piece = Piece.new("a_piece", Coordinate.new(3, 2), Piece::Set::WHITE, [@a_move])
     end
 
     it 'moves to given position if position is valid' do
