@@ -43,3 +43,6 @@ Further instructions will be displayed on screen, which are as follows: <br/>
 Entering the aforesaid command will move the piece at position (3, 4) to position (5, 6).
 - After every move, a json string will be printed on the screen.
 - To visualize the state of the board, Copy the aforesaid json, visit https://chess-simulator.herokuapp.com/ and paste it there.
+
+## The Visualizer Web App
+[Chess State Visualizer Github](https://github.com/MohitBabbar1219/chess-state-visualizer)
